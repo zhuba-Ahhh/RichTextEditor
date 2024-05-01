@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react';
+import fontmin from 'rollup-plugin-font-minify';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import importToCDN, { autoComplete } from 'vite-plugin-cdn-import';
@@ -7,6 +8,9 @@ import svgrPlugin from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
+  define: {
+    VERSION: JSON.stringify(process.env.npm_package_version),
+  },
   css: {
     modules: {
       localsConvention: 'camelCase', // 或者 'dashes' | 'camelCaseOnly'
@@ -20,18 +24,19 @@ export default defineConfig({
       // 打包完成后自动打开浏览器，显示产物体积报告
       open: false,
     }),
+    fontmin(),
     importToCDN({
       modules: [
         autoComplete('react'),
         autoComplete('react-dom'),
         {
-          name: "katex",
-          var: "katex",
+          name: 'katex',
+          var: 'katex',
           path: `https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.9/katex.min.js`,
         },
         {
-          name: "@excalidraw/excalidraw",
-          var: "ExcalidrawLib",
+          name: '@excalidraw/excalidraw',
+          var: 'ExcalidrawLib',
           path: `https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw@0.17.6/dist/excalidraw.production.min.js`,
         },
       ],
@@ -41,7 +46,7 @@ export default defineConfig({
         // gif图片压缩
         optimizationLevel: 1, // 选择1到3之间的优化级别
         interlaced: false, // 隔行扫描gif进行渐进式渲染
-        colors: 64 // 将每个输出GIF中不同颜色的数量减少到num或更少。数字必须介于2和256之间。
+        colors: 64, // 将每个输出GIF中不同颜色的数量减少到num或更少。数字必须介于2和256之间。
       },
       optipng: {
         // png

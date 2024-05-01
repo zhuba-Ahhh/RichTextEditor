@@ -4,11 +4,12 @@ import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { $createHeadingNode, $createQuoteNode } from '@lexical/rich-text';
 import { $createParagraphNode, $createTextNode, $getRoot } from 'lexical';
 
+import Editor from './Editor';
+import Settings from './Settings';
 import { isDevPlayground } from './appSettings';
 import { SettingsContext, useSettings } from './context/SettingsContext';
 import { SharedAutocompleteContext } from './context/SharedAutocompleteContext';
 import { SharedHistoryContext } from './context/SharedHistoryContext';
-import Editor from './Editor';
 import logo from './images/logo.svg';
 import PlaygroundNodes from './nodes/PlaygroundNodes';
 import DocsPlugin from './plugins/DocsPlugin';
@@ -16,13 +17,10 @@ import PasteLogPlugin from './plugins/PasteLogPlugin';
 import { TableContext } from './plugins/TablePlugin';
 import TestRecorderPlugin from './plugins/TestRecorderPlugin';
 import TypingPerfPlugin from './plugins/TypingPerfPlugin';
-import Settings from './Settings';
 import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
-import './index.css';
 
-console.warn(
-  'If you are profiling the playground app, please ensure you turn off the debug view. You can disable it by pressing on the settings control in the bottom-left of your screen and toggling the debug view setting.',
-);
+import { useEffect } from 'react';
+import versionLog from './utils/version';
 
 function prepopulatedRichText() {
   const root = $getRoot();
@@ -113,8 +111,8 @@ function App(): JSX.Element {
     editorState: isCollab
       ? null
       : emptyEditor
-      ? undefined
-      : prepopulatedRichText,
+        ? undefined
+        : prepopulatedRichText,
     namespace: 'Playground',
     nodes: [...PlaygroundNodes],
     onError: (error: Error) => {
@@ -122,6 +120,10 @@ function App(): JSX.Element {
     },
     theme: PlaygroundEditorTheme,
   };
+
+  useEffect(() => {
+    versionLog();
+  }, []);
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
