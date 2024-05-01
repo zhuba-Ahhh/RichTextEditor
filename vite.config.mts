@@ -26,8 +26,13 @@ export default defineConfig({
         autoComplete('react-dom'),
         {
           name: "katex",
-          var: "Katex",
+          var: "katex",
           path: `https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.9/katex.min.js`,
+        },
+        {
+          name: "@excalidraw/excalidraw",
+          var: "ExcalidrawLib",
+          path: `https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw@0.17.6/dist/excalidraw.production.min.js`,
         },
       ],
     }),
@@ -89,7 +94,7 @@ export default defineConfig({
         preset: 'recommended',
         // manualPureFunctions: ['console.log'],
       },
-      external: ['react', 'react-dom', 'katex'],
+      external: ['react', 'react-dom', 'katex', '@excalidraw/excalidraw'],
     },
     minify: 'terser', // 启用 terser 压缩
     terserOptions: {

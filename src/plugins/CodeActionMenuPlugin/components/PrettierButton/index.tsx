@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable import/no-unused-modules */
 import './index.css';
 
 import { $isCodeNode } from '@lexical/code';
