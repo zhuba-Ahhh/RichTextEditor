@@ -21,7 +21,15 @@ export default defineConfig({
       open: false,
     }),
     importToCDN({
-      modules: [autoComplete('react'), autoComplete('react-dom')],
+      modules: [
+        autoComplete('react'),
+        autoComplete('react-dom'),
+        {
+          name: "katex",
+          var: "Katex",
+          path: `https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.9/katex.min.js`,
+        },
+      ],
     }),
     viteImagemin({
       gifsicle: {
@@ -79,9 +87,9 @@ export default defineConfig({
       },
       treeshake: {
         preset: 'recommended',
-        manualPureFunctions: ['console.log'],
+        // manualPureFunctions: ['console.log'],
       },
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'katex'],
     },
     minify: 'terser', // 启用 terser 压缩
     terserOptions: {
