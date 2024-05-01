@@ -1,0 +1,5 @@
+/* stylelint-disable selector-class-pattern */
+.CommentEditorTheme__paragraph {
+  margin: 0;
+  position: 'relative';
+}
