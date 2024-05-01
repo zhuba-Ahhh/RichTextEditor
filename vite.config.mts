@@ -39,9 +39,9 @@ export default defineConfig({
     viteImagemin({
       gifsicle: {
         // gif图片压缩
-        optimizationLevel: 3, // 选择1到3之间的优化级别
+        optimizationLevel: 1, // 选择1到3之间的优化级别
         interlaced: false, // 隔行扫描gif进行渐进式渲染
-        // colors: 2 // 将每个输出GIF中不同颜色的数量减少到num或更少。数字必须介于2和256之间。
+        colors: 64 // 将每个输出GIF中不同颜色的数量减少到num或更少。数字必须介于2和256之间。
       },
       optipng: {
         // png
