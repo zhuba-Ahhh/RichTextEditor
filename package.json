@@ -4,12 +4,12 @@
   "description": "",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview",
     "commit": "commit",
+    "dev": "vite",
     "format": "prettier --write --ignore-unknown .",
-    "lint": "eslint --cache ./src"
+    "lint": "eslint --cache ./src",
+    "serve": "vite preview"
   },
   "dependencies": {
     "@excalidraw/excalidraw": "^0.17.6",
@@ -80,7 +80,7 @@
     "typescript": "^5.1.6",
     "vite": "^5.1.6",
     "vite-plugin-cdn-import": "^1.0.0",
-    "vite-plugin-minipic": "^1.1.2",
+    "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-svgr": "4.2.0",
     "vite-tsconfig-paths": "^4.0.3"
   }
