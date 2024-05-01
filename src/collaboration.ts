@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Provider } from '@lexical/yjs';
 import { WebsocketProvider } from 'y-websocket';
 import { Doc } from 'yjs';
